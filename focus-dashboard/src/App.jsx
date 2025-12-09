@@ -4,6 +4,7 @@ import Dashboard from './pages/Dashboard';
 import DataManagement from './pages/DataManagement';
 import Auth from './pages/Auth';
 import AdminDashboard from './pages/AdminDashboard';
+import Settings from './components/Settings/Settings';
 import { TimerProvider } from './contexts/TimerContext';
 import { TodosProvider } from './contexts/TodosContext';
 import { useTheme } from './hooks/useTheme';
@@ -103,6 +104,7 @@ function App() {
             user={user}
             onLogout={handleLogout}
           />
+          <Settings />
           {renderPage()}
         </div>
       </TimerProvider>
