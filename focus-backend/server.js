@@ -142,6 +142,47 @@ app.post('/api/auth/login', async (req, res) => {
   }
 });
 
+// 비밀번호 변경
+app.post('/api/auth/change-password', authMiddleware, async (req, res) => {
+  try {
+    const { currentPassword, newPassword } = req.body;
+
+    if (!currentPassword || !newPassword) {
+      return res.status(400).json({ error: '현재 비밀번호와 새 비밀번호를 입력하세요' });
+    }
+
+    if (newPassword.length < 8) {
+      return res.status(400).json({ error: '새 비밀번호는 8자 이상이어야 합니다' });
+    }
+
+    await db.read();
+    const user = db.data.users.find(u => u.id === req.user.id);
+
+    if (!user) {
+      return res.status(404).json({ error: '사용자를 찾을 수 없습니다' });
+    }
+
+    const isCurrentValid = await bcrypt.compare(currentPassword, user.password);
+    if (!isCurrentValid) {
+      return res.status(401).json({ error: '현재 비밀번호가 일치하지 않습니다' });
+    }
+
+    // 기존 비밀번호와 동일한지 체크
+    const isSameAsOld = await bcrypt.compare(newPassword, user.password);
+    if (isSameAsOld) {
+      return res.status(400).json({ error: '새 비밀번호가 기존 비밀번호와 동일합니다' });
+    }
+
+    user.password = await bcrypt.hash(newPassword, 10);
+    await db.write();
+
+    res.json({ message: '비밀번호가 변경되었습니다' });
+  } catch (error) {
+    console.error('비밀번호 변경 에러:', error);
+    res.status(500).json({ error: '서버 오류가 발생했습니다' });
+  }
+});
+
 // ========== 할일 API ==========
 
 // 할일 목록 조회

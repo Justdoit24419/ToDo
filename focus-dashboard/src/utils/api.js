@@ -107,3 +107,21 @@ export const updateHourlyFocusTime = async (date, hour, minutes) => {
 
   return response.json();
 };
+
+// ========== 계정 API ==========
+
+export const changePassword = async (currentPassword, newPassword) => {
+  const response = await fetch(`${API_URL}/auth/change-password`, {
+    method: 'POST',
+    headers: getAuthHeaders(),
+    body: JSON.stringify({ currentPassword, newPassword })
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data?.error || '비밀번호 변경에 실패했습니다');
+  }
+
+  return data;
+};

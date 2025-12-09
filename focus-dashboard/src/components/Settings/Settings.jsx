@@ -1,11 +1,17 @@
 import { useState, useRef } from 'react';
 import { backupData, restoreData, clearAllData } from '../../utils/storage';
+import { changePassword } from '../../utils/api';
 import './Settings.css';
 
 const Settings = ({ onDataChange }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const fileInputRef = useRef(null);
+  const [currentPassword, setCurrentPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [pwStatus, setPwStatus] = useState({ type: '', message: '' });
+  const [pwLoading, setPwLoading] = useState(false);
 
   const handleBackup = () => {
     const success = backupData();
@@ -63,6 +69,38 @@ const Settings = ({ onDataChange }) => {
   const handleToggle = () => {
     setIsOpen(!isOpen);
     setShowConfirm(false);
+  };
+
+  const handlePasswordChange = async () => {
+    setPwStatus({ type: '', message: '' });
+
+    if (!currentPassword || !newPassword || !confirmPassword) {
+      setPwStatus({ type: 'error', message: '모든 필드를 입력해주세요.' });
+      return;
+    }
+
+    if (newPassword.length < 8) {
+      setPwStatus({ type: 'error', message: '새 비밀번호는 8자 이상이어야 합니다.' });
+      return;
+    }
+
+    if (newPassword !== confirmPassword) {
+      setPwStatus({ type: 'error', message: '새 비밀번호가 일치하지 않습니다.' });
+      return;
+    }
+
+    setPwLoading(true);
+    try {
+      await changePassword(currentPassword, newPassword);
+      setPwStatus({ type: 'success', message: '비밀번호가 변경되었습니다.' });
+      setCurrentPassword('');
+      setNewPassword('');
+      setConfirmPassword('');
+    } catch (error) {
+      setPwStatus({ type: 'error', message: error.message || '비밀번호 변경에 실패했습니다.' });
+    } finally {
+      setPwLoading(false);
+    }
   };
 
   return (
@@ -148,6 +186,65 @@ const Settings = ({ onDataChange }) => {
             <p className="info-text warning">
               삭제: 모든 데이터가 영구적으로 삭제됩니다
             </p>
+          </div>
+
+          <h3 className="settings-section-title">계정 보안</h3>
+          <div className="password-card">
+            <div className="form-group">
+              <label htmlFor="current-password">현재 비밀번호</label>
+              <input
+                id="current-password"
+                type="password"
+                value={currentPassword}
+                onChange={(e) => setCurrentPassword(e.target.value)}
+                placeholder="현재 비밀번호"
+                autoComplete="current-password"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="new-password">새 비밀번호</label>
+              <input
+                id="new-password"
+                type="password"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+                placeholder="8자 이상"
+                autoComplete="new-password"
+                minLength={8}
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="confirm-password">새 비밀번호 확인</label>
+              <input
+                id="confirm-password"
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                placeholder="새 비밀번호 재입력"
+                autoComplete="new-password"
+                minLength={8}
+              />
+            </div>
+
+            {pwStatus.message && (
+              <div className={`password-status ${pwStatus.type}`}>
+                {pwStatus.message}
+              </div>
+            )}
+
+            <button
+              className="settings-button change-password"
+              onClick={handlePasswordChange}
+              type="button"
+              disabled={pwLoading}
+            >
+              <span className="button-icon">🔒</span>
+              <span className="button-text">
+                {pwLoading ? '변경 중...' : '비밀번호 변경'}
+              </span>
+            </button>
           </div>
         </div>
       )}
