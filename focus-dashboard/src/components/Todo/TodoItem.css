@@ -1,0 +1,602 @@
+.todo-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.todo-main-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.todo-item:hover {
+  background: #f0f0f0;
+}
+
+.todo-item.completed .todo-text {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.todo-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.todo-text {
+  flex: 1;
+  font-size: 14px;
+  color: #333;
+  word-break: break-word;
+}
+.todo-header-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+.todo-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+.todo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.todo-badge.neutral { background: #eef1f5; color: #607d8b; }
+.todo-badge.info { background: #e3f2fd; color: #1976d2; }
+.todo-badge.success { background: #e8f5e9; color: #2e7d32; }
+.todo-badge.calendar-trigger {
+  background: #fff;
+  color: #4c82ff;
+  border: 1px solid #d7e3ff;
+  cursor: pointer;
+}
+.todo-badge.calendar-trigger:hover {
+  background: #f3f6ff;
+}
+
+.focus-badge {
+  padding: 4px 8px;
+  background-color: #e3f2fd;
+  color: #1976d2;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* 아이콘 버튼 통합 스타일 */
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.2s ease;
+  line-height: 1;
+  color: #666;
+  border-radius: 4px;
+}
+
+.icon-btn:hover {
+  transform: scale(1.15);
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.icon-btn.time-btn {
+  color: #9c27b0;
+}
+
+.icon-btn.time-btn:hover {
+  color: #7b1fa2;
+  background: rgba(156, 39, 176, 0.1);
+}
+
+.icon-btn.calendar-btn {
+  color: #ff9800;
+}
+
+.icon-btn.calendar-btn:hover {
+  color: #f57c00;
+  background: rgba(255, 152, 0, 0.1);
+}
+
+.icon-btn.delete-btn {
+  color: #f44336;
+}
+
+.icon-btn.delete-btn:hover {
+  color: #d32f2f;
+  background: rgba(244, 67, 54, 0.1);
+  transform: scale(1.2);
+}
+
+.todo-date-picker {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  background: #fff;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  flex-wrap: wrap;
+}
+
+.todo-date-picker label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+}
+
+.todo-date-picker input[type="date"] {
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: inherit;
+}
+
+.apply-todo-date-btn {
+  padding: 6px 16px;
+  background: var(--gradient-bg);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  align-self: flex-end;
+}
+
+.apply-todo-date-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.todo-dates-display {
+  display: flex;
+  gap: 12px;
+  padding: 8px 12px;
+  background: #e8f5e9;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #2e7d32;
+}
+
+.todo-dates-display span {
+  font-weight: 600;
+}
+
+/* 서브태스크 스타일 */
+.subtasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-left: 24px;
+  margin-top: 8px;
+}
+
+.subtask-item-extended {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+  background: #fff;
+  border-radius: 6px;
+  border-left: 3px solid #2196f3;
+}
+
+.subtask-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.subtask-checkbox {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.subtask-text {
+  flex: 1;
+  font-size: 13px;
+  color: #555;
+  font-weight: 500;
+}
+
+.subtask-text.completed {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.subtask-delete-btn {
+  padding: 2px 6px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.2s ease;
+}
+
+.subtask-delete-btn:hover {
+  background-color: #d32f2f;
+}
+
+/* 보조작업 진행 상황 */
+.subtask-progress-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-left: 24px;
+}
+
+.subtask-time-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+}
+
+.subtask-time-label {
+  color: #666;
+  font-weight: 600;
+}
+
+.subtask-time-divider {
+  color: #ccc;
+}
+
+.subtask-progress-bar-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.subtask-progress-bar {
+  flex: 1;
+  height: 6px;
+  background: #e0e0e0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.subtask-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #2196f3 0%, #64b5f6 100%);
+  transition: width 0.3s ease;
+}
+.subtask-progress-fill.safe { background: linear-gradient(90deg, #4c82ff 0%, #80a8ff 100%); }
+.subtask-progress-fill.warn { background: linear-gradient(90deg, #ffb74d 0%, #ff9800 100%); }
+.subtask-progress-fill.danger { background: linear-gradient(90deg, #ef5350 0%, #e53935 100%); }
+
+.subtask-progress-text {
+  font-size: 11px;
+  font-weight: 700;
+  color: #2196f3;
+  min-width: 35px;
+  text-align: right;
+}
+
+.subtask-input-form {
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: #fff;
+  border-radius: 6px;
+  border: 2px solid #2196f3;
+  margin-top: 8px;
+}
+
+.subtask-input {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: inherit;
+}
+
+.subtask-input:focus {
+  outline: none;
+  border-color: #2196f3;
+}
+
+.subtask-add-btn {
+  padding: 6px 12px;
+  background: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.subtask-add-btn:hover {
+  background: #1976d2;
+}
+
+.subtask-cancel-btn {
+  padding: 6px 12px;
+  background: #999;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.subtask-cancel-btn:hover {
+  background: #777;
+}
+
+.show-subtask-input-btn {
+  padding: 6px 12px;
+  background: transparent;
+  color: #2196f3;
+  border: 1px dashed #2196f3;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 8px;
+  width: 100%;
+  text-align: left;
+}
+
+.show-subtask-input-btn:hover {
+  background: #e3f2fd;
+  border-style: solid;
+}
+
+/* 할당 시간 버튼 및 입력 */
+.allocated-time-btn {
+  padding: 6px 10px;
+  background-color: #9c27b0;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.allocated-time-btn:hover {
+  background-color: #7b1fa2;
+}
+
+
+.allocated-time-input {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  background: #fff;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  align-items: center;
+}
+
+.allocated-time-input label {
+  display: flex;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  align-items: center;
+}
+
+.allocated-time-input input[type="number"] {
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: inherit;
+  width: 100px;
+}
+
+.apply-allocated-time-btn {
+  padding: 6px 16px;
+  background: #9c27b0;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.apply-allocated-time-btn:hover {
+  background: #7b1fa2;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(156, 39, 176, 0.3);
+}
+
+/* 작업 요약 - 컴팩트 한 줄 표시 */
+.task-summary-compact {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 4px 0;
+  margin-top: 6px;
+  font-size: 11px;
+  line-height: 1.3;
+}
+
+.summary-item {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.summary-text {
+  font-weight: 400;
+  color: #666;
+  font-size: 11px;
+}
+
+.summary-label {
+  font-weight: 500;
+  color: #666;
+  font-size: 12px;
+}
+
+.summary-value {
+  font-weight: 500;
+  color: #333;
+  font-size: 12px;
+}
+
+.summary-divider {
+  color: #ccc;
+  font-weight: 400;
+  margin: 0 4px;
+  font-size: 11px;
+}
+
+.date-calendar-icon {
+  cursor: pointer;
+  font-size: 11px;
+  margin-left: 2px;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.date-calendar-icon:hover {
+  opacity: 1;
+}
+
+/* 서브태스크 비중 입력 및 뱃지 */
+.subtask-weight-input {
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: inherit;
+  width: 80px;
+}
+.subtask-allocated-input {
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: inherit;
+  width: 110px;
+}
+
+.subtask-weight-input:focus,
+.subtask-allocated-input:focus {
+  outline: none;
+  border-color: #2196f3;
+}
+
+.subtask-weight-badge {
+  padding: 2px 8px;
+  background-color: #fff3e0;
+  color: #e65100;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.subtask-start-btn {
+  padding: 4px 8px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.2s ease;
+}
+.subtask-start-btn:hover { background-color: #388e3c; }
+
+.subtask-edit-btn {
+  padding: 4px 8px;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.2s ease;
+}
+.subtask-edit-btn:hover { background-color: #1976d2; }
+
+.subtask-edit-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px;
+  background: #f0f7ff;
+  border-radius: 6px;
+  border: 2px solid #2196f3;
+  margin-top: 8px;
+}
+
+.subtask-edit-actions {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.subtask-save-btn {
+  padding: 6px 16px;
+  background: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.subtask-save-btn:hover { background: #1976d2; }
+
+/* 타이머 실행 중 표시 */
+.timer-indicator {
+  color: #ff9800;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}

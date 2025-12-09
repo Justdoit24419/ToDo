@@ -1,0 +1,242 @@
+.settings {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  z-index: 999;
+  transition: all 0.3s ease;
+  min-width: 120px;
+}
+
+.settings:not(.open) {
+  max-height: 50px;
+  overflow: hidden;
+}
+
+.settings.open {
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.settings:hover {
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+}
+
+.settings-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+  margin-bottom: 0;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  text-align: left;
+}
+
+.settings-header:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.settings-header:active {
+  background-color: rgba(0, 0, 0, 0.1);
+  transform: scale(0.98);
+}
+
+.settings-header:focus {
+  outline: 2px solid var(--color-accent, #4caf50);
+  outline-offset: 2px;
+}
+
+.settings-icon {
+  font-size: 20px;
+}
+
+.settings-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #333;
+  flex: 1;
+}
+
+.settings-toggle {
+  font-size: 12px;
+  color: #666;
+  transition: transform 0.3s ease;
+}
+
+.settings.open .settings-toggle {
+  transform: rotate(180deg);
+}
+
+.settings-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.settings-section-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #666;
+  margin: 8px 0 4px 0;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.settings-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  background: #f9f9f9;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  min-width: 200px;
+  font-family: inherit;
+}
+
+.settings-button:hover {
+  background: #f0f0f0;
+  transform: translateX(4px);
+}
+
+.settings-button.backup:hover {
+  border-color: #4caf50;
+}
+
+.settings-button.restore:hover {
+  border-color: #2196f3;
+}
+
+.settings-button.clear:hover {
+  border-color: #f44336;
+  background: #ffe5e5;
+}
+
+.button-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.button-text {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  text-align: left;
+}
+
+.confirm-box {
+  background: #fff3cd;
+  border: 2px solid #ffc107;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.confirm-message {
+  font-size: 13px;
+  font-weight: 600;
+  color: #856404;
+  margin: 0 0 12px 0;
+  text-align: center;
+}
+
+.confirm-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.confirm-button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.confirm-button.yes {
+  background: #f44336;
+  color: white;
+}
+
+.confirm-button.yes:hover {
+  background: #d32f2f;
+  transform: scale(1.05);
+}
+
+.confirm-button.no {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.confirm-button.no:hover {
+  background: #d0d0d0;
+  transform: scale(1.05);
+}
+
+.settings-info {
+  margin-top: 8px;
+  padding: 12px;
+  background: #f5f5f5;
+  border-radius: 8px;
+}
+
+.info-text {
+  font-size: 11px;
+  color: #666;
+  margin: 4px 0;
+  line-height: 1.4;
+}
+
+.info-text.warning {
+  color: #d32f2f;
+  font-weight: 600;
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+  .settings {
+    top: 70px;
+    right: 10px;
+    padding: 10px;
+  }
+
+  .settings-button {
+    min-width: 160px;
+    padding: 10px;
+  }
+
+  .button-text {
+    font-size: 13px;
+  }
+}

@@ -1,0 +1,220 @@
+/* 아날로그 타이머 공통 스타일 */
+.analog-timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* 현재 실제 시간 (상단) */
+.current-real-time {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--real-time-color);
+  font-family: 'Courier New', monospace;
+  letter-spacing: 2px;
+}
+
+.analog-clock {
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.15));
+}
+
+/* 시계 배경 */
+.clock-background {
+  fill: var(--clock-bg);
+  stroke: var(--clock-border);
+  stroke-width: 2;
+}
+
+/* 시계 숫자 */
+.clock-number {
+  fill: var(--clock-number-color);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* 중앙 경과 시간 텍스트 */
+.center-elapsed-label {
+  fill: var(--center-text-color);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.center-elapsed-time {
+  fill: var(--center-elapsed-color);
+  font-family: 'Courier New', monospace;
+}
+
+.center-total-time {
+  fill: var(--center-total-color);
+  font-family: 'Courier New', monospace;
+}
+
+/* 진행률 원 */
+.progress-ring {
+  stroke: var(--progress-color);
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+/* 시계 눈금 */
+.hour-mark {
+  stroke: var(--hour-mark-color);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.minute-mark {
+  stroke: var(--minute-mark-color);
+  stroke-width: 1;
+}
+
+/* 중앙점 */
+.center-dot {
+  fill: var(--center-dot-color);
+}
+
+/* 시침, 분침, 초침 */
+.hour-hand {
+  stroke: var(--hour-hand-color);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.minute-hand {
+  stroke: var(--minute-hand-color);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.second-hand {
+  stroke: var(--second-hand-color);
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.2));
+}
+
+/* 하단 정보 영역 */
+.analog-info-bottom {
+  text-align: center;
+}
+
+.total-focus-time {
+  font-size: 16px;
+  color: var(--info-text-color);
+  font-weight: 500;
+}
+
+/* ===== 테마 1: 클래식 (전통적인 시계) ===== */
+.analog-timer-classic {
+  --clock-bg: #ffffff;
+  --clock-border: #ddd;
+  --clock-number-color: #333;
+  --progress-color: #4caf50;
+  --hour-mark-color: #999;
+  --minute-mark-color: #ddd;
+  --center-dot-color: #d32f2f;
+  --hour-hand-color: #333;
+  --minute-hand-color: #555;
+  --second-hand-color: #d32f2f;
+  --real-time-color: #333;
+  --center-text-color: #999;
+  --center-elapsed-color: #2196f3;
+  --center-total-color: #999;
+  --info-text-color: #666;
+}
+
+/* ===== 테마 2: 모던 (미니멀 디자인) ===== */
+.analog-timer-modern {
+  --clock-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --clock-border: transparent;
+  --clock-number-color: #ffffff;
+  --progress-color: #ffd700;
+  --hour-mark-color: rgba(255, 255, 255, 0.9);
+  --minute-mark-color: rgba(255, 255, 255, 0.4);
+  --center-dot-color: #ffd700;
+  --hour-hand-color: #ffffff;
+  --minute-hand-color: rgba(255, 255, 255, 0.9);
+  --second-hand-color: #ffd700;
+  --real-time-color: #ffffff;
+  --center-text-color: rgba(255, 255, 255, 0.8);
+  --center-elapsed-color: #ffd700;
+  --center-total-color: rgba(255, 255, 255, 0.7);
+  --info-text-color: #ffffff;
+}
+
+.analog-timer-modern .clock-background {
+  fill: url(#modernGradient);
+}
+
+.analog-timer-modern .analog-clock {
+  filter: drop-shadow(0 10px 30px rgba(102, 126, 234, 0.4));
+}
+
+/* ===== 테마 3: 네온 (사이버펑크 스타일) ===== */
+.analog-timer-neon {
+  --clock-bg: #0a0e27;
+  --clock-border: #00ffff;
+  --clock-number-color: #00ffff;
+  --progress-color: #ff00ff;
+  --hour-mark-color: #00ffff;
+  --minute-mark-color: rgba(0, 255, 255, 0.3);
+  --center-dot-color: #ff00ff;
+  --hour-hand-color: #00ffff;
+  --minute-hand-color: #00ff88;
+  --second-hand-color: #ff00ff;
+  --real-time-color: #00ffff;
+  --center-text-color: rgba(0, 255, 255, 0.7);
+  --center-elapsed-color: #ff00ff;
+  --center-total-color: rgba(0, 255, 255, 0.6);
+  --info-text-color: #00ffff;
+}
+
+.analog-timer-neon .analog-clock {
+  filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.6))
+          drop-shadow(0 0 40px rgba(255, 0, 255, 0.4));
+}
+
+.analog-timer-neon .progress-ring {
+  filter: drop-shadow(0 0 10px rgba(255, 0, 255, 0.8));
+}
+
+.analog-timer-neon .hour-hand,
+.analog-timer-neon .minute-hand {
+  filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.8));
+}
+
+.analog-timer-neon .second-hand {
+  filter: drop-shadow(0 0 8px rgba(255, 0, 255, 0.8));
+}
+
+.analog-timer-neon .current-real-time {
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.8),
+               0 0 20px rgba(0, 255, 255, 0.6);
+}
+
+.analog-timer-neon .center-elapsed-time {
+  filter: drop-shadow(0 0 10px rgba(255, 0, 255, 0.8));
+}
+
+.analog-timer-neon .total-focus-time {
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+}
+
+/* 애니메이션 */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.second-hand {
+  transform-origin: center;
+  animation: tick 1s steps(60) infinite;
+}
+
+@keyframes tick {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(6deg);
+  }
+}

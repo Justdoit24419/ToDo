@@ -1,0 +1,166 @@
+.theme-selector {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  min-width: 120px;
+}
+
+.theme-selector:not(.open) {
+  max-height: 50px;
+  overflow: hidden;
+}
+
+.theme-selector.open {
+  max-height: 400px;
+}
+
+.theme-selector:hover {
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+}
+
+.theme-selector-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+  margin-bottom: 0;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  text-align: left;
+}
+
+.theme-selector-header:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.theme-selector-header:active {
+  background-color: rgba(0, 0, 0, 0.1);
+  transform: scale(0.98);
+}
+
+.theme-selector-header:focus {
+  outline: 2px solid var(--color-accent, #4caf50);
+  outline-offset: 2px;
+}
+
+.theme-icon {
+  font-size: 20px;
+}
+
+.theme-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #333;
+  flex: 1;
+}
+
+.theme-toggle {
+  font-size: 12px;
+  color: #666;
+  transition: transform 0.3s ease;
+}
+
+.theme-selector.open .theme-toggle {
+  transform: rotate(180deg);
+}
+
+.theme-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.theme-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  background: #f9f9f9;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 200px;
+}
+
+.theme-option:hover {
+  background: #f0f0f0;
+  transform: translateX(4px);
+}
+
+.theme-option.active {
+  background: white;
+  border-color: var(--color-accent, #4caf50);
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.2);
+}
+
+.theme-preview {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.theme-name {
+  flex: 1;
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  text-align: left;
+}
+
+.theme-check {
+  font-size: 16px;
+  color: var(--color-accent, #4caf50);
+  font-weight: bold;
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+  .theme-selector {
+    top: 10px;
+    right: 10px;
+    padding: 12px;
+  }
+
+  .theme-option {
+    width: 160px;
+    padding: 8px;
+  }
+
+  .theme-preview {
+    width: 32px;
+    height: 32px;
+  }
+
+  .theme-name {
+    font-size: 12px;
+  }
+}

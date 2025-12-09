@@ -1,0 +1,317 @@
+/* 디지털 타이머 공통 스타일 */
+.digital-timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 40px 20px;
+}
+
+.digital-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'Courier New', monospace;
+}
+
+.digit-group {
+  display: flex;
+  gap: 4px;
+}
+
+.digit {
+  display: inline-block;
+  width: var(--digit-width);
+  height: var(--digit-height);
+  line-height: var(--digit-height);
+  text-align: center;
+  font-size: var(--digit-font-size);
+  font-weight: 700;
+  color: var(--digit-color);
+  background: var(--digit-bg);
+  border-radius: var(--digit-radius);
+  box-shadow: var(--digit-shadow);
+  transition: all 0.1s ease;
+}
+
+.digit.small {
+  width: var(--digit-small-width);
+  height: var(--digit-small-height);
+  line-height: var(--digit-small-height);
+  font-size: var(--digit-small-font-size);
+}
+
+.separator {
+  font-size: var(--separator-font-size);
+  font-weight: 700;
+  color: var(--separator-color);
+  animation: blink 1s step-end infinite;
+}
+
+.separator.small {
+  font-size: var(--separator-small-font-size);
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0.3;
+  }
+}
+
+.milliseconds-group {
+  opacity: 0.8;
+}
+
+/* 진행률 바 */
+.digital-progress-bar {
+  width: 100%;
+  max-width: 600px;
+  height: var(--progress-bar-height);
+  background: var(--progress-bar-bg);
+  border-radius: var(--progress-bar-radius);
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--progress-bar-shadow);
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--progress-fill-bg);
+  transition: width 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--progress-glow-bg);
+  opacity: 0.5;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* 정보 표시 */
+.digital-info {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.info-label {
+  font-size: 14px;
+  color: var(--info-label-color);
+  font-weight: 500;
+}
+
+.info-value {
+  font-size: 20px;
+  color: var(--info-value-color);
+  font-weight: 700;
+}
+
+/* ===== 테마 1: 미니멀 (심플하고 깔끔한 디자인) ===== */
+.digital-timer-minimal {
+  --digit-width: 80px;
+  --digit-height: 120px;
+  --digit-font-size: 72px;
+  --digit-small-width: 50px;
+  --digit-small-height: 80px;
+  --digit-small-font-size: 48px;
+  --digit-color: #333;
+  --digit-bg: #f5f5f5;
+  --digit-radius: 12px;
+  --digit-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --separator-font-size: 64px;
+  --separator-small-font-size: 42px;
+  --separator-color: #999;
+  --progress-bar-height: 12px;
+  --progress-bar-bg: #e0e0e0;
+  --progress-bar-radius: 6px;
+  --progress-bar-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  --progress-fill-bg: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  --progress-glow-bg: linear-gradient(90deg, rgba(255,255,255,0.5) 0%, transparent 100%);
+  --info-label-color: #999;
+  --info-value-color: #667eea;
+}
+
+/* ===== 테마 2: 레트로 (복고풍 LED 스타일) ===== */
+.digital-timer-retro {
+  --digit-width: 80px;
+  --digit-height: 120px;
+  --digit-font-size: 72px;
+  --digit-small-width: 50px;
+  --digit-small-height: 80px;
+  --digit-small-font-size: 48px;
+  --digit-color: #ff4444;
+  --digit-bg: #1a1a1a;
+  --digit-radius: 4px;
+  --digit-shadow: 0 0 20px rgba(255, 68, 68, 0.5),
+                   inset 0 0 10px rgba(255, 68, 68, 0.2);
+  --separator-font-size: 64px;
+  --separator-small-font-size: 42px;
+  --separator-color: #ff4444;
+  --progress-bar-height: 16px;
+  --progress-bar-bg: #1a1a1a;
+  --progress-bar-radius: 2px;
+  --progress-bar-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.5);
+  --progress-fill-bg: #ff4444;
+  --progress-glow-bg: linear-gradient(90deg, rgba(255,68,68,0.6) 0%, transparent 100%);
+  --info-label-color: #666;
+  --info-value-color: #ff4444;
+
+  background: #000;
+  border-radius: 16px;
+  box-shadow: 0 0 40px rgba(255, 68, 68, 0.3);
+}
+
+.digital-timer-retro .digit {
+  text-shadow: 0 0 10px rgba(255, 68, 68, 0.8),
+               0 0 20px rgba(255, 68, 68, 0.6);
+  border: 1px solid rgba(255, 68, 68, 0.3);
+}
+
+.digital-timer-retro .separator {
+  text-shadow: 0 0 10px rgba(255, 68, 68, 0.8);
+}
+
+.digital-timer-retro .progress-fill {
+  box-shadow: 0 0 20px rgba(255, 68, 68, 0.6);
+}
+
+.digital-timer-retro .info-value {
+  text-shadow: 0 0 8px rgba(255, 68, 68, 0.6);
+}
+
+/* ===== 테마 3: 미래형 (홀로그램 스타일) ===== */
+.digital-timer-futuristic {
+  --digit-width: 80px;
+  --digit-height: 120px;
+  --digit-font-size: 72px;
+  --digit-small-width: 50px;
+  --digit-small-height: 80px;
+  --digit-small-font-size: 48px;
+  --digit-color: #00ff88;
+  --digit-bg: rgba(0, 255, 136, 0.1);
+  --digit-radius: 8px;
+  --digit-shadow: 0 0 30px rgba(0, 255, 136, 0.4),
+                   inset 0 0 20px rgba(0, 255, 136, 0.1);
+  --separator-font-size: 64px;
+  --separator-small-font-size: 42px;
+  --separator-color: #00ffff;
+  --progress-bar-height: 14px;
+  --progress-bar-bg: rgba(0, 255, 255, 0.1);
+  --progress-bar-radius: 7px;
+  --progress-bar-shadow: 0 0 20px rgba(0, 255, 255, 0.2),
+                          inset 0 0 10px rgba(0, 255, 255, 0.1);
+  --progress-fill-bg: linear-gradient(90deg, #00ff88 0%, #00ffff 50%, #00ff88 100%);
+  --progress-glow-bg: linear-gradient(90deg, rgba(0,255,136,0.6) 0%, rgba(0,255,255,0.6) 50%, rgba(0,255,136,0.6) 100%);
+  --info-label-color: rgba(0, 255, 255, 0.7);
+  --info-value-color: #00ff88;
+
+  background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+  border-radius: 16px;
+  box-shadow: 0 0 50px rgba(0, 255, 136, 0.3);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+.digital-timer-futuristic .digit {
+  text-shadow: 0 0 15px rgba(0, 255, 136, 0.8),
+               0 0 30px rgba(0, 255, 136, 0.5);
+  border: 1px solid rgba(0, 255, 136, 0.4);
+  backdrop-filter: blur(10px);
+}
+
+.digital-timer-futuristic .separator {
+  text-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+}
+
+.digital-timer-futuristic .progress-fill {
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.6);
+  animation: hologramScan 3s linear infinite;
+}
+
+@keyframes hologramScan {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.digital-timer-futuristic .progress-fill {
+  background-size: 200% 100%;
+}
+
+.digital-timer-futuristic .info-value {
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.6);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .digital-timer {
+    padding: 20px 10px;
+    gap: 24px;
+  }
+
+  .digital-display {
+    gap: 4px;
+  }
+
+  .digit-group {
+    gap: 2px;
+  }
+
+  .digit {
+    width: 50px !important;
+    height: 75px !important;
+    line-height: 75px !important;
+    font-size: 48px !important;
+  }
+
+  .digit.small {
+    width: 32px !important;
+    height: 50px !important;
+    line-height: 50px !important;
+    font-size: 32px !important;
+  }
+
+  .separator {
+    font-size: 42px !important;
+  }
+
+  .separator.small {
+    font-size: 28px !important;
+  }
+
+  .digital-info {
+    gap: 20px;
+  }
+
+  .info-value {
+    font-size: 16px;
+  }
+}

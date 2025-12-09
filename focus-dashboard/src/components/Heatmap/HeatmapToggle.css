@@ -1,0 +1,27 @@
+.heatmap-toggle {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.toggle-btn {
+  flex: 1;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: #f0f0f0;
+  color: #666;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.toggle-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.toggle-btn.active {
+  background-color: #4caf50;
+  color: white;
+}

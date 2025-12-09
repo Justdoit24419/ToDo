@@ -1,0 +1,63 @@
+{
+  "users": [
+    {
+      "id": "admin-001",
+      "username": "admin",
+      "password": "$2a$10$DgSMygrDqVZAIEtltFxLvujSQRjLCJ2XCgpwMHx3uH5glIBMJRDY2",
+      "role": "admin",
+      "createdAt": "2025-12-09T06:55:34.136Z"
+    },
+    {
+      "id": "user-1765263372380",
+      "username": "moneyqueen41",
+      "password": "$2a$10$EendD5ZjCtQz8L7deK/Mq.F.N6f.1IR/XCoxsdh8YEMuvYm2ssuTi",
+      "role": "user",
+      "createdAt": "2025-12-09T06:56:12.380Z"
+    }
+  ],
+  "todos": {
+    "user-1765263372380": [],
+    "admin-001": [
+      {
+        "id": "ae2c3e17-4274-4442-9200-4f7fffa841c3",
+        "text": "시간앱",
+        "completed": false,
+        "focusTime": 0,
+        "allocatedTime": 0,
+        "startDate": "2025-12-09",
+        "endDate": "2025-12-09",
+        "subtasks": [
+          {
+            "id": "5e8af0c6-5b28-4e2b-bbba-a5712026320a",
+            "text": "데이터관리",
+            "completed": false,
+            "weight": 20,
+            "allocatedTime": 0,
+            "focusTime": 0
+          },
+          {
+            "id": "645fe072-c064-4862-98aa-75f25bbc9ac3",
+            "text": "관리자페이지",
+            "completed": false,
+            "weight": 5,
+            "allocatedTime": 0,
+            "focusTime": 0
+          }
+        ]
+      }
+    ]
+  },
+  "focusHistory": {
+    "user-1765263372380": {}
+  },
+  "hourlyFocus": {
+    "user-1765263372380": {}
+  },
+  "stats": {
+    "user-1765263372380": {
+      "totalFocusTime": 0,
+      "totalSessions": 0,
+      "lastActive": "2025-12-09T06:56:12.380Z"
+    }
+  }
+}

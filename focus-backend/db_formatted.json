@@ -1,0 +1,160 @@
+{
+    "users": [
+        {
+            "id": "admin-001",
+            "username": "admin",
+            "password": "$2a$10$H9BIssb67rHrjh0XrniNMOebRXpNhXlAe0SoXQ18yS1WsZ.GzxJnq",
+            "role": "admin",
+            "createdAt": "2025-12-06T09:20:39.295Z"
+        },
+        {
+            "id": "user-1765034754756",
+            "username": "moneyqueen41",
+            "password": "$2a$10$DjVlHUMyeB2y5MiR75IWWONMsghoYuq0L5c9E6Ef2QjF.Gip0ykqW",
+            "role": "user",
+            "createdAt": "2025-12-06T15:25:54.756Z"
+        }
+    ],
+    "todos": {
+        "admin-001": [
+            {
+                "id": "74f62a43-0b7a-477b-91c4-c8647723acd9",
+                "text": "\uc2dc\uac04\uc571",
+                "completed": false,
+                "focusTime": 304080240,
+                "allocatedTime": 240,
+                "startDate": "",
+                "endDate": "",
+                "subtasks": [
+                    {
+                        "id": "1ada98df-c7cc-41e4-8674-f41eb3438049",
+                        "text": "\ub370\uc774\ud130\uad00\ub9ac",
+                        "completed": false,
+                        "weight": 20,
+                        "allocatedTime": 0,
+                        "focusTime": 304080240
+                    },
+                    {
+                        "id": "716e8bc9-08d1-4a54-9e80-4763cc2cecc5",
+                        "text": "\ub178\uc158\uc5f0\uacb0",
+                        "completed": false,
+                        "weight": 20,
+                        "allocatedTime": 0,
+                        "focusTime": 0
+                    },
+                    {
+                        "id": "01f9f3e2-8785-4acb-b807-a6772a7997c7",
+                        "text": "n8n\uc5f0\uacb0",
+                        "completed": false,
+                        "weight": 30,
+                        "allocatedTime": 0,
+                        "focusTime": 0
+                    }
+                ]
+            },
+            {
+                "id": "e7c2baa7-4ebe-4a4f-bca6-df6f1c400e7b",
+                "text": "\ub3c5\uc11c",
+                "completed": false,
+                "focusTime": 0,
+                "allocatedTime": 60,
+                "startDate": "2025-12-09",
+                "endDate": "2025-12-09",
+                "subtasks": []
+            }
+        ],
+        "user-1765034754756": [
+            {
+                "id": "1bc1f6c1-2c16-40fc-8a0b-b44d8adc61f9",
+                "text": "\ud3ec\ubaa8\ub3c4\ub85c \ub300\uc2dc\ubcf4\ub4dc \uc6f9\ud398\uc774\uc9c0",
+                "completed": false,
+                "focusTime": 16945020,
+                "allocatedTime": 120,
+                "startDate": "2025-12-07",
+                "endDate": "2025-12-07",
+                "subtasks": [
+                    {
+                        "id": "a8dd1985-7f31-4c59-881e-2d78e7338bce",
+                        "text": "\uba54\uc778\ud398\uc774\uc9c0",
+                        "completed": false,
+                        "weight": 10,
+                        "allocatedTime": 120,
+                        "focusTime": 45
+                    },
+                    {
+                        "id": "17766646-5501-4011-97e8-4986a9fd76fe",
+                        "text": "\ub85c\uadf8\uc778",
+                        "completed": false,
+                        "weight": 10,
+                        "allocatedTime": 120,
+                        "focusTime": 0
+                    },
+                    {
+                        "id": "708325fc-42b9-4f54-a588-6ea33c8361d7",
+                        "text": "n8n \uc5f0\uacb0",
+                        "completed": false,
+                        "weight": 10,
+                        "allocatedTime": 60,
+                        "focusTime": 0
+                    },
+                    {
+                        "id": "96810566-2e33-4f7c-a57a-2d11b627a788",
+                        "text": "\ub178\uc158\uc5f0\uacb0",
+                        "completed": false,
+                        "weight": 10,
+                        "allocatedTime": 60,
+                        "focusTime": 16944975
+                    }
+                ]
+            },
+            {
+                "id": "8702e71b-1b02-46db-9293-f541f94b8a31",
+                "text": "\ub3c5\uc11c",
+                "completed": false,
+                "focusTime": 0,
+                "allocatedTime": 0,
+                "startDate": "",
+                "endDate": "",
+                "subtasks": []
+            },
+            {
+                "id": "4b22cb1d-585f-4191-bdbd-da72e91601ea",
+                "text": "\uc6b4\ub3d9",
+                "completed": false,
+                "focusTime": 0,
+                "allocatedTime": 120,
+                "startDate": "",
+                "endDate": "",
+                "subtasks": []
+            },
+            {
+                "id": "a1a8cf00-b91b-49a8-8407-aa82127e8832",
+                "text": "\ub4f1\uc0b0",
+                "completed": false,
+                "focusTime": 0,
+                "allocatedTime": 45,
+                "startDate": "",
+                "endDate": "",
+                "subtasks": []
+            }
+        ]
+    },
+    "focusHistory": {
+        "user-1765034754756": {},
+        "admin-001": {
+            "2025-12-07": 25
+        }
+    },
+    "stats": {
+        "user-1765034754756": {
+            "totalFocusTime": 0,
+            "totalSessions": 0,
+            "lastActive": "2025-12-06T15:25:54.756Z"
+        },
+        "admin-001": {
+            "totalFocusTime": 25,
+            "totalSessions": 1,
+            "lastActive": "2025-12-07T13:41:03.114Z"
+        }
+    }
+}
