@@ -4,7 +4,7 @@ import { changePassword } from '../../utils/api';
 import './Settings.css';
 
 const Settings = ({ onDataChange }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true); // 기본 열림으로 변경해 새 섹션이 바로 보이도록 함
   const [showConfirm, setShowConfirm] = useState(false);
   const fileInputRef = useRef(null);
   const [currentPassword, setCurrentPassword] = useState('');
@@ -117,6 +117,7 @@ const Settings = ({ onDataChange }) => {
 
       {isOpen && (
         <div className="settings-options">
+          <div className="settings-version">v20251209.1 비밀번호 변경 기능 추가됨</div>
           <h3 className="settings-section-title">데이터 관리</h3>
 
           <button
