@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 import { db, initDB } from './db.js';
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 const JWT_SECRET = 'pomodoro-secret-key-2025';
 
 // CORS 설정 - 모든 origin 허용
@@ -379,7 +379,7 @@ app.get('/api/admin/stats', authMiddleware, adminMiddleware, async (req, res) =>
 });
 
 // 서버 시작
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`
 🚀 포모도로 집중 대시보드 백엔드 서버 실행 중
 📡 포트: ${PORT}
