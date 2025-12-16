@@ -13,32 +13,13 @@ const AdminDashboard = () => {
 
   const fetchData = async () => {
     try {
-      const token = localStorage.getItem('token');
-      const API_BASE_URL = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:3001';
+      // LocalStorage에서 직접 데이터 가져오기
+      const { getAdminUsers, getAdminStats } = await import('../utils/api');
 
-      const [usersRes, statsRes] = await Promise.all([
-        fetch(`${API_BASE_URL}/api/admin/users`, {
-          headers: { 'Authorization': `Bearer ${token}` }
-        }),
-        fetch(`${API_BASE_URL}/api/admin/stats`, {
-          headers: { 'Authorization': `Bearer ${token}` }
-        })
+      const [usersData, statsData] = await Promise.all([
+        getAdminUsers(),
+        getAdminStats()
       ]);
-
-      if (!usersRes.ok || !statsRes.ok) {
-        const errorStatus = !usersRes.ok ? usersRes.status : statsRes.status;
-
-        if (errorStatus === 403) {
-          throw new Error('관리자 권한이 필요합니다. 관리자 계정으로 로그인해주세요.');
-        } else if (errorStatus === 401) {
-          throw new Error('인증이 만료되었습니다. 다시 로그인해주세요.');
-        } else {
-          throw new Error('데이터를 불러올 수 없습니다');
-        }
-      }
-
-      const usersData = await usersRes.json();
-      const statsData = await statsRes.json();
 
       setUsers(usersData);
       setStats(statsData);

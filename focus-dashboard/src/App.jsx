@@ -17,17 +17,22 @@ function App() {
   const { currentTheme, changeTheme } = useTheme();
 
   useEffect(() => {
-    // 로컬 스토리지에서 사용자 정보 확인
-    const token = localStorage.getItem('token');
-    const storedUser = localStorage.getItem('user');
+    // LocalStorage에서 사용자 정보 확인
+    const storedUser = localStorage.getItem('pomodoro_user');
 
-    if (token && storedUser) {
+    if (storedUser) {
       try {
         setUser(JSON.parse(storedUser));
       } catch (error) {
         console.error('사용자 정보 로드 실패:', error);
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
+        // 기본 사용자로 자동 설정
+        const defaultUser = {
+          id: 'default-user',
+          username: 'user',
+          role: 'user'
+        };
+        localStorage.setItem('pomodoro_user', JSON.stringify(defaultUser));
+        setUser(defaultUser);
       }
     }
 
@@ -35,12 +40,12 @@ function App() {
   }, []);
 
   const handleLogin = (userData) => {
+    localStorage.setItem('pomodoro_user', JSON.stringify(userData));
     setUser(userData);
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
+    localStorage.removeItem('pomodoro_user');
     setUser(null);
     setCurrentPage('dashboard');
   };
