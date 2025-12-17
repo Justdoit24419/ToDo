@@ -15,13 +15,13 @@ const Dashboard = ({ user, onNavigateToAdmin }) => {
 
   // 전역 타이머의 상태를 감시해서 currentTimerMinutes 업데이트
   useEffect(() => {
-    if (timer.isRunning || timer.isPaused) {
-      const elapsed = Math.floor((timer.duration - timer.timeLeft) / 60);
+    if (timer.isRunning || timer.isPaused || timer.isStopped) {
+      const elapsed = timer.getElapsedMinutes();
       setCurrentTimerMinutes(elapsed);
     } else {
       setCurrentTimerMinutes(0);
     }
-  }, [timer.timeLeft, timer.duration, timer.isRunning, timer.isPaused]);
+  }, [timer.timeLeft, timer.isRunning, timer.isPaused, timer.isStopped, timer.getElapsedMinutes]);
 
   // 타이머 완료 시 처리 (전역 타이머가 FINISHED 상태가 될 때)
   useEffect(() => {
